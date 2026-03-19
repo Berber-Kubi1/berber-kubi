@@ -2,13 +2,11 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berber Kubi - Randevu Al</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-:root{--primary-black:#0a0a0a;--secondary-black:#1a1a1a;--accent-gold:#d4af37;--accent-amber:#ffbf00;--text-primary:#fff;--text-secondary:#b8b8b8;--success-green:#2ecc71;--border-color:#333}*{margin:0;padding:0;box-sizing:border-box}body{font-family:Montserrat,sans-serif;background:var(--primary-black);color:var(--text-primary);line-height:1.6;overflow-x:hidden}.bg-pattern{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 50%,rgba(212,175,55,.03) 0,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,191,0,.02) 0,transparent 50%);pointer-events:none;z-index:0}.container{max-width:1400px;margin:0 auto;padding:0 20px;position:relative;z-index:1}header{padding:30px 0;border-bottom:1px solid var(--border-color);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95)}.header-content{display:flex;justify-content:space-between;align-items:center}.logo{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--accent-gold);letter-spacing:2px;text-transform:uppercase}.logo span{color:var(--text-primary);font-weight:400}.header-actions{display:flex;gap:15px}.btn{padding:12px 30px;border:none;border-radius:4px;font-family:Montserrat,sans-serif;font-weight:500;font-size:.95rem;cursor:pointer;transition:all .3s ease;text-transform:uppercase;letter-spacing:1px}.btn-primary{background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));color:var(--primary-black)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,175,55,.3)}.btn-secondary{background:0 0;border:1px solid var(--accent-gold);color:var(--accent-gold)}.btn-secondary:hover{background:var(--accent-gold);color:var(--primary-black)}.hero{padding:80px 0;text-align:center;animation:fadeInUp 1s ease}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.hero h1{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;margin-bottom:20px;background:linear-gradient(135deg,var(--text-primary),var(--accent-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero p{font-size:1.2rem;color:var(--text-secondary);max-width:600px;margin:0 auto 40px}.location-card{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;padding:30px;margin:40px auto;max-width:800px;display:flex;align-items:center;gap:30px;transition:all .3s ease}.location-card:hover{border-color:var(--accent-gold);box-shadow:0 10px 40px rgba(212,175,55,.1)}.location-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}.location-info h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px}.location-info p{color:var(--text-secondary);margin-bottom:15px}.map-link{color:var(--accent-gold);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:5px;transition:all .3s ease}.map-link:hover{gap:10px;color:var(--accent-amber)}.booking-section{padding:60px 0;scroll-margin-top:100px}.section-title{font-family:'Playfair Display',serif;font-size:2.5rem;text-align:center;margin-bottom:50px;position:relative}.section-title::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,transparent,var(--accent-gold),transparent);margin:20px auto 0}.booking-container{display:grid;grid-template-columns:1fr 400px;gap:40px;max-width:1200px;margin:0 auto}.calendar-section{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;padding:40px}.calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.calendar-header h3{font-family:'Playfair Display',serif;font-size:1.8rem}.calendar-nav{display:flex;gap:10px}.nav-btn{width:40px;height:40px;border:1px solid var(--border-color);background:0 0;color:var(--text-primary);border-radius:4px;cursor:pointer;transition:all .3s ease;font-size:1.2rem}.nav-btn:hover{border-color:var(--accent-gold);color:var(--accent-gold)}.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:30px}.day-label{text-align:center;color:var(--text-secondary);font-size:.9rem;font-weight:600;padding:10px 0}.day-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-color);border-radius:8px;cursor:pointer;transition:all .3s ease;font-weight:500}.day-cell:hover:not(.disabled):not(.empty){border-color:var(--accent-gold);background:rgba(212,175,55,.1)}.day-cell.selected{background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));color:var(--primary-black);border-color:var(--accent-gold)}.day-cell.disabled{opacity:.3;cursor:not-allowed}.day-cell.empty{border:none;cursor:default}.time-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.time-slot{padding:15px;border:1px solid var(--border-color);border-radius:8px;text-align:center;cursor:pointer;transition:all .3s ease;font-weight:500}.time-slot:hover:not(.booked){border-color:var(--accent-gold);background:rgba(212,175,55,.1)}.time-slot.selected{background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));color:var(--primary-black);border-color:var(--accent-gold)}.time-slot.booked{background:var(--secondary-black);color:var(--text-secondary);cursor:not-allowed;opacity:.5}.booking-form{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;padding:40px;position:sticky;top:120px}.booking-form h3{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:30px}.form-group{margin-bottom:25px}.form-group label{display:block;margin-bottom:8px;color:var(--text-secondary);font-weight:500;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}.form-group input,.form-group select,.form-group textarea{width:100%;padding:15px;background:var(--primary-black);border:1px solid var(--border-color);border-radius:8px;color:var(--text-primary);font-family:Montserrat,sans-serif;font-size:1rem;transition:all .3s ease}.form-group textarea{min-height:80px;resize:vertical}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:0;border-color:var(--accent-gold);box-shadow:0 0 0 3px rgba(212,175,55,.1)}.selected-info{background:rgba(212,175,55,.1);border:1px solid var(--accent-gold);border-radius:8px;padding:20px;margin-bottom:25px}.selected-info h4{color:var(--accent-gold);margin-bottom:10px;font-weight:600}.selected-info p{color:var(--text-secondary);margin-bottom:5px}.inspiration-note{background:var(--primary-black);padding:15px;border-radius:8px;margin-bottom:25px;font-size:.9rem;color:var(--text-secondary);text-align:center}.inspiration-note strong{color:var(--accent-gold)}.btn-submit{width:100%;padding:18px;font-size:1.1rem}.gallery-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;overflow-y:auto}.gallery-modal.active{display:block}.gallery-modal-content{max-width:1200px;margin:50px auto;padding:40px}.gallery-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}.gallery-header h2{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent-gold)}.close-gallery{width:50px;height:50px;border:1px solid var(--accent-gold);background:0 0;color:var(--accent-gold);border-radius:50%;font-size:1.5rem;cursor:pointer;transition:all .3s ease}.close-gallery:hover{background:var(--accent-gold);color:var(--primary-black);transform:rotate(90deg)}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px}.gallery-card{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .3s ease;position:relative;display:flex;flex-direction:column}.gallery-card:hover{transform:translateY(-10px);border-color:var(--accent-gold);box-shadow:0 15px 40px rgba(212,175,55,.3)}.gallery-card.selected{border:3px solid var(--accent-gold);box-shadow:0 0 30px rgba(212,175,55,.5)}.gallery-card img{width:100%;height:300px;object-fit:cover}.gallery-card-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(212,175,55,.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease}.gallery-card.selected .gallery-card-overlay{opacity:1}.gallery-card-overlay span{font-size:3rem;color:var(--primary-black)}.gallery-empty{text-align:center;padding:80px 20px;color:var(--text-secondary);grid-column:1/-1}.gallery-empty-icon{font-size:5rem;margin-bottom:20px;opacity:.3}.qr-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center}.qr-modal.active{display:flex}.qr-content{background:var(--secondary-black);border:2px solid var(--accent-gold);border-radius:16px;padding:50px;text-align:center;max-width:500px;animation:scaleIn .3s ease}@keyframes scaleIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}.qr-content h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:20px;color:var(--accent-gold)}.qr-code{width:250px;height:250px;background:#fff;margin:30px auto;border-radius:8px;display:flex;align-items:center;justify-content:center}.appointment-details{text-align:left;background:var(--primary-black);padding:20px;border-radius:8px;margin:20px 0}.appointment-details p{margin-bottom:10px;color:var(--text-secondary)}.appointment-details strong{color:var(--text-primary)}.close-modal{margin-top:20px;background:0 0;border:1px solid var(--accent-gold);color:var(--accent-gold)}
-
-@media (max-width:1200px){.booking-container{grid-template-columns:1fr}.booking-form{position:relative;top:0}}@media (max-width:968px){.hero h1{font-size:3rem}.location-card{flex-direction:column;text-align:center}.time-slots{grid-template-columns:repeat(2,1fr)}.gallery-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}}@media (max-width:640px){.header-content{flex-direction:column;gap:15px}.logo{font-size:1.5rem}.header-actions{width:100%;flex-direction:column}.btn{width:100%}.hero h1{font-size:2.2rem}.hero{padding:40px 0}.calendar-section{padding:15px}.day-cell{font-size:0.8rem}.time-slots{grid-template-columns:repeat(2,1fr)}.form-group input, .form-group select, .form-group textarea { font-size: 16px !important; } .qr-content{padding:30px 20px;max-width:95%}.gallery-modal-content{padding:20px}.gallery-grid{grid-template-columns:1fr}}
+:root{--primary-black:#0a0a0a;--secondary-black:#1a1a1a;--accent-gold:#d4af37;--accent-amber:#ffbf00;--text-primary:#fff;--text-secondary:#b8b8b8;--success-green:#2ecc71;--border-color:#333}*{margin:0;padding:0;box-sizing:border-box}body{font-family:Montserrat,sans-serif;background:var(--primary-black);color:var(--text-primary);line-height:1.6;overflow-x:hidden}.bg-pattern{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 50%,rgba(212,175,55,.03) 0,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,191,0,.02) 0,transparent 50%);pointer-events:none;z-index:0}.container{max-width:1400px;margin:0 auto;padding:0 20px;position:relative;z-index:1}header{padding:30px 0;border-bottom:1px solid var(--border-color);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95)}.header-content{display:flex;justify-content:space-between;align-items:center}.logo{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--accent-gold);letter-spacing:2px;text-transform:uppercase}.logo span{color:var(--text-primary);font-weight:400}.header-actions{display:flex;gap:15px}.btn{padding:12px 30px;border:none;border-radius:4px;font-family:Montserrat,sans-serif;font-weight:500;font-size:.95rem;cursor:pointer;transition:all .3s ease;text-transform:uppercase;letter-spacing:1px}.btn-primary{background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));color:var(--primary-black)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,175,55,.3)}.btn-secondary{background:0 0;border:1px solid var(--accent-gold);color:var(--accent-gold)}.btn-secondary:hover{background:var(--accent-gold);color:var(--primary-black)}.hero{padding:80px 0;text-align:center;animation:fadeInUp 1s ease}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.hero h1{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;margin-bottom:20px;background:linear-gradient(135deg,var(--text-primary),var(--accent-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero p{font-size:1.2rem;color:var(--text-secondary);max-width:600px;margin:0 auto 40px}.location-card{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;padding:30px;margin:40px auto;max-width:800px;display:flex;align-items:center;gap:30px;transition:all .3s ease}.location-card:hover{border-color:var(--accent-gold);box-shadow:0 10px 40px rgba(212,175,55,.1)}.location-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}.location-info h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px}.location-info p{color:var(--text-secondary);margin-bottom:15px}.map-link{color:var(--accent-gold);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:5px;transition:all .3s ease}.map-link:hover{gap:10px;color:var(--accent-amber)}.booking-section{padding:60px 0;scroll-margin-top:100px}.section-title{font-family:'Playfair Display',serif;font-size:2.5rem;text-align:center;margin-bottom:50px;position:relative}.section-title::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,transparent,var(--accent-gold),transparent);margin:20px auto 0}.booking-container{display:grid;grid-template-columns:1fr 400px;gap:40px;max-width:1200px;margin:0 auto}.calendar-section{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;padding:40px}.calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.calendar-header h3{font-family:'Playfair Display',serif;font-size:1.8rem}.calendar-nav{display:flex;gap:10px}.nav-btn{width:40px;height:40px;border:1px solid var(--border-color);background:0 0;color:var(--text-primary);border-radius:4px;cursor:pointer;transition:all .3s ease;font-size:1.2rem}.nav-btn:hover{border-color:var(--accent-gold);color:var(--accent-gold)}.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:30px}.day-label{text-align:center;color:var(--text-secondary);font-size:.9rem;font-weight:600;padding:10px 0}.day-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-color);border-radius:8px;cursor:pointer;transition:all .3s ease;font-weight:500}.day-cell:hover:not(.disabled):not(.empty){border-color:var(--accent-gold);background:rgba(212,175,55,.1)}.day-cell.selected{background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));color:var(--primary-black);border-color:var(--accent-gold)}.day-cell.disabled{opacity:.3;cursor:not-allowed}.day-cell.empty{border:none;cursor:default}.time-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.time-slot{padding:15px;border:1px solid var(--border-color);border-radius:8px;text-align:center;cursor:pointer;transition:all .3s ease;font-weight:500}.time-slot:hover:not(.booked){border-color:var(--accent-gold);background:rgba(212,175,55,.1)}.time-slot.selected{background:linear-gradient(135deg,var(--accent-gold),var(--accent-amber));color:var(--primary-black);border-color:var(--accent-gold)}.time-slot.booked{background:var(--secondary-black);color:var(--text-secondary);cursor:not-allowed;opacity:.5}.booking-form{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;padding:40px;position:sticky;top:120px}.booking-form h3{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:30px}.form-group{margin-bottom:25px}.form-group label{display:block;margin-bottom:8px;color:var(--text-secondary);font-weight:500;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}.form-group input,.form-group select{width:100%;padding:15px;background:var(--primary-black);border:1px solid var(--border-color);border-radius:8px;color:var(--text-primary);font-family:Montserrat,sans-serif;font-size:1rem;transition:all .3s ease}.form-group input:focus,.form-group select:focus{outline:0;border-color:var(--accent-gold);box-shadow:0 0 0 3px rgba(212,175,55,.1)}.selected-info{background:rgba(212,175,55,.1);border:1px solid var(--accent-gold);border-radius:8px;padding:20px;margin-bottom:25px}.selected-info h4{color:var(--accent-gold);margin-bottom:10px;font-weight:600}.selected-info p{color:var(--text-secondary);margin-bottom:5px}.inspiration-note{background:var(--primary-black);padding:15px;border-radius:8px;margin-bottom:25px;font-size:.9rem;color:var(--text-secondary);text-align:center}.inspiration-note strong{color:var(--accent-gold)}.btn-submit{width:100%;padding:18px;font-size:1.1rem}.gallery-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;overflow-y:auto}.gallery-modal.active{display:block}.gallery-modal-content{max-width:1200px;margin:50px auto;padding:40px}.gallery-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}.gallery-header h2{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent-gold)}.close-gallery{width:50px;height:50px;border:1px solid var(--accent-gold);background:0 0;color:var(--accent-gold);border-radius:50%;font-size:1.5rem;cursor:pointer;transition:all .3s ease}.close-gallery:hover{background:var(--accent-gold);color:var(--primary-black);transform:rotate(90deg)}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px}.gallery-card{background:var(--secondary-black);border:1px solid var(--border-color);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .3s ease;position:relative}.gallery-card:hover{transform:translateY(-10px);border-color:var(--accent-gold);box-shadow:0 15px 40px rgba(212,175,55,.3)}.gallery-card.selected{border:3px solid var(--accent-gold);box-shadow:0 0 30px rgba(212,175,55,.5)}.gallery-card img{width:100%;height:300px;object-fit:cover}.gallery-card-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(212,175,55,.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease}.gallery-card.selected .gallery-card-overlay{opacity:1}.gallery-card-overlay span{font-size:3rem;color:var(--primary-black)}.gallery-empty{text-align:center;padding:80px 20px;color:var(--text-secondary);grid-column:1/-1}.gallery-empty-icon{font-size:5rem;margin-bottom:20px;opacity:.3}.qr-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center}.qr-modal.active{display:flex}.qr-content{background:var(--secondary-black);border:2px solid var(--accent-gold);border-radius:16px;padding:50px;text-align:center;max-width:500px;animation:scaleIn .3s ease}@keyframes scaleIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}.qr-content h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:20px;color:var(--accent-gold)}.qr-code{width:250px;height:250px;background:#fff;margin:30px auto;border-radius:8px;display:flex;align-items:center;justify-content:center}.appointment-details{text-align:left;background:var(--primary-black);padding:20px;border-radius:8px;margin:20px 0}.appointment-details p{margin-bottom:10px;color:var(--text-secondary)}.appointment-details strong{color:var(--text-primary)}.close-modal{margin-top:20px;background:0 0;border:1px solid var(--accent-gold);color:var(--accent-gold)}@media (max-width:1200px){.booking-container{grid-template-columns:1fr}.booking-form{position:relative;top:0}}@media (max-width:968px){.hero h1{font-size:3rem}.location-card{flex-direction:column;text-align:center}.time-slots{grid-template-columns:repeat(2,1fr)}.gallery-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}}@media (max-width:640px){.header-content{flex-direction:column;gap:15px}.logo{font-size:1.5rem}.header-actions{width:100%;flex-direction:column}.btn{width:100%}.hero h1{font-size:2.2rem}.time-slots{grid-template-columns:1fr}.qr-content{padding:30px 20px;max-width:90%}.gallery-modal-content{padding:20px}.gallery-grid{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
@@ -37,7 +35,7 @@
                 <h3>Konumumuz</h3>
                 <p>Yeşilpınar Mahallesi, Eyüpsultan / İstanbul</p>
                 <p style="color: var(--text-secondary); font-size: 0.9rem;">📞 +90 555 123 45 67</p>
-                <a href="https://maps.google.com/?q=Yeşilpınar,Eyüpsultan,İstanbul" target="_blank" class="map-link">Haritada Göster →</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Yeşilpınar+Mahallesi+Eyüpsultan+İstanbul" target="_blank" class="map-link">Haritada Göster →</a>
             </div>
         </div>
     </div>
@@ -101,10 +99,6 @@
                             <label>Telefon Numarası</label>
                             <input type="tel" id="phone" placeholder="0555 123 45 67" required>
                         </div>
-                        <div class="form-group">
-                            <label>Ek İstekler / Notunuz</label>
-                            <textarea id="userNote" placeholder="Varsa özel isteklerinizi buraya yazabilirsiniz..."></textarea>
-                        </div>
                         <button type="submit" class="btn btn-primary btn-submit">Randevuyu Onayla</button>
                     </form>
                 </div>
@@ -125,7 +119,7 @@
             <h2>✓ Randevunuz Oluşturuldu!</h2>
             <p style="color: var(--text-secondary); margin-bottom: 20px;">SMS bildirim ile randevunuz yaklaşınca size haber vereceğiz.</p>
             <div class="qr-code" id="qrCode"></div>
-            <div class="appointment-details" id="modalDetails">
+            <div class="appointment-details">
                 <p><strong>Tarih:</strong> <span id="modalDate"></span></p>
                 <p><strong>Saat:</strong> <span id="modalTime"></span></p>
                 <p><strong>Hizmet:</strong> <span id="modalService"></span></p>
@@ -134,33 +128,13 @@
                 <p id="modalStyle" style="display: none;"><strong>İlham Alınan Tarz:</strong> <span id="modalStyleName"></span></p>
             </div>
             <button class="btn btn-primary" onclick="closeQRModal()">Kapat</button>
+            <button class="btn close-modal" onclick="closeQRModal()">Ana Sayfaya Dön</button>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-
-    <script>
-        let currentDate=new Date,selectedDate=null,selectedTime=null,selectedStyle=null,gallery=[],appointments=[],timeSlots=["10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30"];
-        function scrollToBooking(){document.getElementById("bookingSection").scrollIntoView({behavior:"smooth"})}
-        function openGallery(){loadGallery();document.getElementById("galleryModal").classList.add("active")}
-        function closeGallery(){document.getElementById("galleryModal").classList.remove("active")}
-        function loadGallery(){gallery=JSON.parse(localStorage.getItem("berberKubiGallery"))||[];renderGallery()}
-        function renderGallery(){const e=document.getElementById("galleryGrid");0===gallery.length?e.innerHTML='<div class="gallery-empty"><h3>Galeri Boş</h3></div>':e.innerHTML=gallery.map((e,t)=>`<div class="gallery-card ${selectedStyle===t?"selected":""}" onclick="selectStyle(${t})"><img src="${e.url}"><div style="padding:10px;text-align:center;"><p style="color:var(--accent-gold);">${e.styleName || "Stil #"+(t+1)}</p></div><div class="gallery-card-overlay"><span>✓</span></div></div>`).join("")}
-        function selectStyle(e){selectedStyle===e?selectedStyle=null:selectedStyle=e;document.getElementById("inspirationNote").style.display=selectedStyle!==null?"block":"none";if(selectedStyle!==null)document.getElementById("selectedStyleName").textContent=gallery[e].styleName || `Stil #${e+1}`;renderGallery()}
-        function renderCalendar(){const e=currentDate.getFullYear(),t=currentDate.getMonth(),a=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];document.getElementById("currentMonthYear").textContent=`${a[t]} ${e}`;const s=new Date(e,t,1).getDay(),n=new Date(e,t+1,0).getDate(),l=new Date();l.setHours(0,0,0,0);const d=document.getElementById("calendarDays");d.innerHTML="";const r=0===s?6:s-1;for(let e=0;e<r;e++)d.appendChild(Object.assign(document.createElement("div"),{className:"day-cell empty"}));for(let a=1;a<=n;a++){const s=document.createElement("div");s.className="day-cell",s.textContent=a;const n=new Date(e,t,a);n.setHours(0,0,0,0);const r=`${e}-${String(t+1).padStart(2,"0")}-${String(a).padStart(2,"0")}`;n<l?s.classList.add("disabled"):(s.onclick=()=>selectDate(r),selectedDate===r&&s.classList.add("selected")),d.appendChild(s)}}
-        function changeMonth(e){currentDate.setMonth(currentDate.getMonth()+e);selectedDate=selectedTime=null;updateSelectedInfo();renderCalendar();renderTimeSlots()}
-        function selectDate(e){selectedDate=e;selectedTime=null;renderCalendar();renderTimeSlots();updateSelectedInfo()}
-        function renderTimeSlots(){const e=document.getElementById("timeSlots");e.innerHTML="";if(!selectedDate)return;timeSlots.forEach(t=>{const a=document.createElement("div");a.className="time-slot";a.textContent=t;a.onclick=()=>selectTime(t);if(selectedTime===t)a.classList.add("selected");e.appendChild(a)})}
-        function selectTime(e){selectedTime=e;renderTimeSlots();updateSelectedInfo()}
-        function updateSelectedInfo(){const e=document.getElementById("selectedInfo");if(selectedDate&&selectedTime){const[t,a,s]=selectedDate.split("-");document.getElementById("selectedDate").textContent=`📅 ${s}.${a}.${t}`;document.getElementById("selectedTime").textContent=`🕐 ${selectedTime}`;e.style.display="block"}else e.style.display="none"}
-        function showQRModal(e){const[t,a,s]=e.date.split("-");document.getElementById("modalDate").textContent=`${s}.${a}.${t}`;document.getElementById("modalTime").textContent=e.time;document.getElementById("modalService").textContent=e.service;document.getElementById("modalName").textContent=`${e.firstName} ${e.lastName}`;document.getElementById("modalPhone").textContent=e.phone;const d=document.getElementById("modalDetails");if(e.note){const p=document.createElement("p");p.innerHTML=`<strong>Not:</strong> ${e.note}`;d.appendChild(p)}const n=JSON.stringify({berber:"Berber Kubi",name:`${e.firstName}`,date:e.date,time:e.time}),l=document.getElementById("qrCode");l.innerHTML="";QRCode.toCanvas(n,{width:200},(err,canvas)=>{if(!err)l.appendChild(canvas)});document.getElementById("qrModal").classList.add("active")}
-        function closeQRModal(){document.getElementById("qrModal").classList.remove("active");window.scrollTo({top:0,behavior:"smooth"})}
-        document.addEventListener("DOMContentLoaded",()=>{renderCalendar();renderTimeSlots();loadGallery()});
-    </script>
-
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, onSnapshot, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBzWt0GNW3rT-Gc4LotPBTEua84muvyBhw",
@@ -174,37 +148,237 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+        let currentDate = new Date();
+        let selectedDateStr = null;
+        let selectedTimeStr = null;
+        let selectedStyle = null;
+        let appointments = [];
+        let gallery = [];
+
+        const timeSlots = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30','13:00', '13:30', '14:00', '14:30', '15:00', '15:30','16:00', '16:30', '17:00', '17:30', '18:00', '18:30','19:00', '19:30'];
+        
+        // Firebase'den randevuları dinle
+        onSnapshot(collection(db, "appointments"), (snapshot) => {
+            appointments = [];
+            snapshot.forEach(doc => {
+                appointments.push({ id: doc.id, ...doc.data() });
+            });
+            renderTimeSlots();
+        });
+
+        // Firebase'den galeriyi dinle
+        onSnapshot(collection(db, "gallery"), (snapshot) => {
+            gallery = [];
+            snapshot.forEach(doc => {
+                gallery.push({ id: doc.id, ...doc.data() });
+            });
+            renderGallery();
+        });
+
+        window.scrollToBooking = () => {
+            document.getElementById('bookingSection').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        window.openGallery = () => {
+            document.getElementById('galleryModal').classList.add('active');
+        };
+
+        window.closeGallery = () => {
+            document.getElementById('galleryModal').classList.remove('active');
+        };
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            if (gallery.length === 0) {
+                grid.innerHTML = `<div class="gallery-empty"><div class="gallery-empty-icon">✂️</div><h3>Henüz galeri boş</h3><p>Yakında harika traş örnekleri eklenecek</p></div>`;
+                return;
+            }
+            grid.innerHTML = gallery.map((img, index) => `
+                <div class="gallery-card ${selectedStyle === index ? 'selected' : ''}" onclick="selectStyle(${index})">
+                    <img src="${img.url}" alt="${img.styleName || 'Traş Stili'}">
+                    <div class="gallery-card-overlay"><span>✓</span></div>
+                </div>
+            `).join('');
+        }
+
+        window.selectStyle = (index) => {
+            if (selectedStyle === index) {
+                selectedStyle = null;
+                document.getElementById('inspirationNote').style.display = 'none';
+            } else {
+                selectedStyle = index;
+                document.getElementById('inspirationNote').style.display = 'block';
+                document.getElementById('selectedStyleName').textContent = gallery[index].styleName || `Traş Stili #${index + 1}`;
+            }
+            renderGallery();
+        };
+
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const monthNames = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran','Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+            document.getElementById('currentMonthYear').textContent = `${monthNames[month]} ${year}`;
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const calendarDays = document.getElementById('calendarDays');
+            calendarDays.innerHTML = '';
+            const startDay = firstDay === 0 ? 6 : firstDay - 1;
+            for (let i = 0; i < startDay; i++) {
+                calendarDays.appendChild(Object.assign(document.createElement('div'), {className: 'day-cell empty'}));
+            }
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'day-cell';
+                dayCell.textContent = day;
+                const cellDate = new Date(year, month, day);
+                cellDate.setHours(0, 0, 0, 0);
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                if (cellDate < today) {
+                    dayCell.classList.add('disabled');
+                } else {
+                    dayCell.onclick = () => selectDate(dateStr);
+                    if (selectedDateStr === dateStr) dayCell.classList.add('selected');
+                }
+                calendarDays.appendChild(dayCell);
+            }
+        }
+
+        window.changeMonth = (dir) => {
+            currentDate.setMonth(currentDate.getMonth() + dir);
+            selectedDateStr = selectedTimeStr = null;
+            updateSelectedInfo();
+            renderCalendar();
+            renderTimeSlots();
+        };
+
+        function selectDate(dateStr) {
+            selectedDateStr = dateStr;
+            selectedTimeStr = null;
+            renderCalendar();
+            renderTimeSlots();
+            updateSelectedInfo();
+        }
+
+        function renderTimeSlots() {
+            const container = document.getElementById('timeSlots');
+            container.innerHTML = '';
+            if (!selectedDateStr) {
+                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">Önce bir tarih seçin</p>';
+                return;
+            }
+            timeSlots.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                const isBooked = appointments.some(apt => apt.date === selectedDateStr && apt.time === time);
+                if (isBooked) {
+                    slot.classList.add('booked');
+                    slot.innerHTML = `${time}<br><small>Dolu</small>`;
+                } else {
+                    slot.textContent = time;
+                    slot.onclick = () => selectTime(time);
+                    if (selectedTimeStr === time) slot.classList.add('selected');
+                }
+                container.appendChild(slot);
+            });
+        }
+
+        function selectTime(time) {
+            selectedTimeStr = time;
+            renderTimeSlots();
+            updateSelectedInfo();
+        }
+
+        function updateSelectedInfo() {
+            const info = document.getElementById('selectedInfo');
+            if (selectedDateStr && selectedTimeStr) {
+                const [y, m, d] = selectedDateStr.split('-');
+                document.getElementById('selectedDate').textContent = `📅 ${d}.${m}.${y}`;
+                document.getElementById('selectedTime').textContent = `🕐 ${selectedTimeStr}`;
+                info.style.display = 'block';
+            } else {
+                info.style.display = 'none';
+            }
+        }
+
         window.submitBooking = async (e) => {
             e.preventDefault();
-            if(!selectedDate || !selectedTime) return alert("Lütfen tarih ve saat seçin!");
-
-            const serviceMap = {haircut:"Saç Kesimi", beard:"Sakal Traşı", combo:"Kombo (Saç + Sakal)"};
+            if (!selectedDateStr || !selectedTimeStr) {
+                alert('Lütfen tarih ve saat seçin!');
+                return;
+            }
             
-            const appointmentData = {
-                firstName: document.getElementById("firstName").value,
-                lastName: document.getElementById("lastName").value,
-                phone: document.getElementById("phone").value,
-                note: document.getElementById("userNote").value,
-                service: serviceMap[document.getElementById("serviceType").value],
-                date: selectedDate,
-                time: selectedTime,
-                status: "pending",
-                inspirationStyle: selectedStyle !== null ? (gallery[selectedStyle].styleName || `Stil #${selectedStyle+1}`) : null,
+            const serviceMap = {'haircut': 'Saç Kesimi','beard': 'Sakal Traşı','combo': 'Kombo (Saç + Sakal)'};
+            
+            const apt = {
+                date: selectedDateStr,
+                time: selectedTimeStr,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                service: serviceMap[document.getElementById('serviceType').value],
+                inspirationStyle: selectedStyle !== null ? (gallery[selectedStyle]?.styleName || `Traş Stili #${selectedStyle + 1}`) : null,
+                status: 'pending',
                 createdAt: serverTimestamp()
             };
 
+            console.log('Gönderilen veri:', apt);
+
             try {
-                await addDoc(collection(db, "appointments"), appointmentData);
-                alert("✅ Randevu isteğiniz başarıyla gönderildi!");
-                showQRModal(appointmentData);
-                document.getElementById("bookingForm").reset();
-                window.selectedDate = null; window.selectedTime = null; window.selectedStyle = null;
-                updateSelectedInfo(); renderCalendar(); renderTimeSlots();
+                const docRef = await addDoc(collection(db, "appointments"), apt);
+                console.log('Başarıyla kaydedildi! ID:', docRef.id);
+                showQRModal(apt);
+                document.getElementById('bookingForm').reset();
+                selectedDateStr = selectedTimeStr = selectedStyle = null;
+                document.getElementById('inspirationNote').style.display = 'none';
+                updateSelectedInfo();
+                renderCalendar();
             } catch (error) {
-                console.error("Hata:", error);
-                alert("Hata oluştu, lütfen tekrar deneyin.");
+                console.error("HATA DETAYI:", error);
+                console.error("Hata Kodu:", error.code);
+                console.error("Hata Mesajı:", error.message);
+                alert('HATA: ' + error.message + '\n\nKonsolu kontrol edin (F12)');
             }
         };
+
+        function showQRModal(apt) {
+            const [y, m, d] = apt.date.split('-');
+            document.getElementById('modalDate').textContent = `${d}.${m}.${y}`;
+            document.getElementById('modalTime').textContent = apt.time;
+            document.getElementById('modalService').textContent = apt.service;
+            document.getElementById('modalName').textContent = `${apt.firstName} ${apt.lastName}`;
+            document.getElementById('modalPhone').textContent = apt.phone;
+            if (apt.inspirationStyle) {
+                document.getElementById('modalStyle').style.display = 'block';
+                document.getElementById('modalStyleName').textContent = apt.inspirationStyle;
+            } else {
+                document.getElementById('modalStyle').style.display = 'none';
+            }
+            const qrData = JSON.stringify({
+                berber: 'Berber Kubi',
+                date: apt.date,
+                time: apt.time,
+                name: `${apt.firstName} ${apt.lastName}`,
+                style: apt.inspirationStyle
+            });
+            const qrContainer = document.getElementById('qrCode');
+            qrContainer.innerHTML = '';
+            QRCode.toCanvas(qrData, { width: 250 }, (err, canvas) => {
+                if (!err) qrContainer.appendChild(canvas);
+            });
+            document.getElementById('qrModal').classList.add('active');
+        }
+
+        window.closeQRModal = () => {
+            document.getElementById('qrModal').classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCalendar();
+            renderTimeSlots();
+        });
     </script>
 </body>
 </html>
