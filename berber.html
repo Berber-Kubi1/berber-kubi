@@ -37,7 +37,7 @@
                 <h3>Konumumuz</h3>
                 <p>Yeşilpınar Mahallesi, Eyüpsultan / İstanbul</p>
                 <p style="color: var(--text-secondary); font-size: 0.9rem;">📞 +90 555 123 45 67</p>
-                <a href="http://googleusercontent.com/maps.google.com/2" target="_blank" class="map-link">Haritada Göster →</a>
+                <a href="https://maps.google.com/?q=Yeşilpınar,Eyüpsultan,İstanbul" target="_blank" class="map-link">Haritada Göster →</a>
             </div>
         </div>
     </div>
@@ -136,9 +136,75 @@
             <button class="btn btn-primary" onclick="closeQRModal()">Kapat</button>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
     <script>
-let currentDate=new Date,selectedDate=null,selectedTime=null,selectedStyle=null,appointments=JSON.parse(localStorage.getItem("berberKubiAppointments"))||[],gallery=[],timeSlots=["10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30"];function scrollToBooking(){document.getElementById("bookingSection").scrollIntoView({behavior:"smooth"})}function openGallery(){loadGallery(),document.getElementById("galleryModal").classList.add("active")}function closeGallery(){document.getElementById("galleryModal").classList.remove("active")}function loadGallery(){gallery=JSON.parse(localStorage.getItem("berberKubiGallery"))||[],renderGallery()}function renderGallery(){const e=document.getElementById("galleryGrid");0===gallery.length?e.innerHTML='<div class="gallery-empty"><div class="gallery-empty-icon">✂️</div><h3>Henüz galeri boş</h3><p>Yakında harika traş örnekleri eklenecek</p></div>':e.innerHTML=gallery.map((e,t)=>`<div class="gallery-card ${selectedStyle===t?"selected":""}" onclick="selectStyle(${t})"><img src="${e.url}" alt="Traş Stili ${t+1}"><div style="padding:10px; text-align:center; background:var(--secondary-black); border-top:1px solid var(--border-color);"><p style="color:var(--accent-gold); font-weight:600; font-size:0.9rem;">${e.styleName || "Traş Stili #" + (t + 1)}</p></div><div class="gallery-card-overlay"><span>✓</span></div></div>`).join("")}function selectStyle(e){selectedStyle===e?(selectedStyle=null,document.getElementById("inspirationNote").style.display="none"):(selectedStyle=e,document.getElementById("inspirationNote").style.display="block",document.getElementById("selectedStyleName").textContent=gallery[e].styleName || `Traş Stili #${e+1}`),renderGallery()}function renderCalendar(){const e=currentDate.getFullYear(),t=currentDate.getMonth(),a=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];document.getElementById("currentMonthYear").textContent=`${a[t]} ${e}`;const s=new Date(e,t,1).getDay(),n=new Date(e,t+1,0).getDate(),l=new Date;l.setHours(0,0,0,0);const d=document.getElementById("calendarDays");d.innerHTML="";const r=0===s?6:s-1;for(let e=0;e<r;e++)d.appendChild(Object.assign(document.createElement("div"),{className:"day-cell empty"}));for(let a=1;a<=n;a++){const s=document.createElement("div");s.className="day-cell",s.textContent=a;const n=new Date(e,t,a);n.setHours(0,0,0,0);const r=`${e}-${String(t+1).padStart(2,"0")}-${String(a).padStart(2,"0")}`;n<l?s.classList.add("disabled"):(s.onclick=()=>selectDate(r),selectedDate===r&&s.classList.add("selected")),d.appendChild(s)}}function changeMonth(e){currentDate.setMonth(currentDate.getMonth()+e),selectedDate=selectedTime=null,updateSelectedInfo(),renderCalendar(),renderTimeSlots()}function selectDate(e){selectedDate=e,selectedTime=null,renderCalendar(),renderTimeSlots(),updateSelectedInfo()}function renderTimeSlots(){const e=document.getElementById("timeSlots");if(e.innerHTML="",!selectedDate)return void(e.innerHTML='<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">Önce bir tarih seçin</p>');timeSlots.forEach(t=>{const a=document.createElement("div");if(a.className="time-slot",appointments.some(e=>e.date===selectedDate&&e.time===t))a.classList.add("booked"),a.innerHTML=`${t}<br><small>Dolu</small>`;else if(a.textContent=t,a.onclick=()=>selectTime(t),selectedTime===t)a.classList.add("selected");e.appendChild(a)})}function selectTime(e){selectedTime=e,renderTimeSlots(),updateSelectedInfo()}function updateSelectedInfo(){const e=document.getElementById("selectedInfo");if(selectedDate&&selectedTime){const[t,a,s]=selectedDate.split("-");document.getElementById("selectedDate").textContent=`📅 ${s}.${a}.${t}`,document.getElementById("selectedTime").textContent=`🕐 ${selectedTime}`,e.style.display="block"}else e.style.display="none"}function submitBooking(e){if(e.preventDefault(),!selectedDate||!selectedTime)return void alert("Lütfen tarih ve saat seçin!");const t={haircut:"Saç Kesimi",beard:"Sakal Traşı",combo:"Kombo (Saç + Sakal)"},a={id:Date.now(),date:selectedDate,time:selectedTime,firstName:document.getElementById("firstName").value,lastName:document.getElementById("lastName").value,phone:document.getElementById("phone").value,note:document.getElementById("userNote").value,service:t[document.getElementById("serviceType").value],inspirationStyle:null!==selectedStyle?(gallery[selectedStyle].styleName || `Traş Stili #${selectedStyle+1}`):null,status:"pending"};appointments.push(a),localStorage.setItem("berberKubiAppointments",JSON.stringify(appointments));alert("✅ Randevu isteğiniz başarıyla gönderildi!");showQRModal(a);document.getElementById("bookingForm").reset();selectedDate=selectedTime=selectedStyle=null;document.getElementById("inspirationNote").style.display="none",updateSelectedInfo(),renderCalendar(),renderTimeSlots()}function showQRModal(e){const[t,a,s]=e.date.split("-");document.getElementById("modalDate").textContent=`${s}.${a}.${t}`,document.getElementById("modalTime").textContent=e.time,document.getElementById("modalService").textContent=e.service,document.getElementById("modalName").textContent=`${e.firstName} ${e.lastName}`,document.getElementById("modalPhone").textContent=e.phone;const d=document.getElementById("modalDetails");const oldNote=d.querySelector(".user-note-item");if(oldNote)oldNote.remove();if(e.note){const p=document.createElement("p");p.className="user-note-item";p.innerHTML=`<strong>Notunuz:</strong> <span>${e.note}</span>`;d.appendChild(p)}e.inspirationStyle?(document.getElementById("modalStyle").style.display="block",document.getElementById("modalStyleName").textContent=e.inspirationStyle):document.getElementById("modalStyle").style.display="none";const n=JSON.stringify({berber:"Berber Kubi",id:e.id,date:e.date,time:e.time,name:`${e.firstName} ${e.lastName}`,style:e.inspirationStyle}),l=document.getElementById("qrCode");l.innerHTML="",QRCode.toCanvas(n,{width:250},(e,t)=>{e||l.appendChild(t)}),document.getElementById("qrModal").classList.add("active")}function closeQRModal(){document.getElementById("qrModal").classList.remove("active"),window.scrollTo({top:0,behavior:"smooth"})}document.addEventListener("DOMContentLoaded",()=>{renderCalendar(),renderTimeSlots()});
+        let currentDate=new Date,selectedDate=null,selectedTime=null,selectedStyle=null,gallery=[],appointments=[],timeSlots=["10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30"];
+        function scrollToBooking(){document.getElementById("bookingSection").scrollIntoView({behavior:"smooth"})}
+        function openGallery(){loadGallery();document.getElementById("galleryModal").classList.add("active")}
+        function closeGallery(){document.getElementById("galleryModal").classList.remove("active")}
+        function loadGallery(){gallery=JSON.parse(localStorage.getItem("berberKubiGallery"))||[];renderGallery()}
+        function renderGallery(){const e=document.getElementById("galleryGrid");0===gallery.length?e.innerHTML='<div class="gallery-empty"><h3>Galeri Boş</h3></div>':e.innerHTML=gallery.map((e,t)=>`<div class="gallery-card ${selectedStyle===t?"selected":""}" onclick="selectStyle(${t})"><img src="${e.url}"><div style="padding:10px;text-align:center;"><p style="color:var(--accent-gold);">${e.styleName || "Stil #"+(t+1)}</p></div><div class="gallery-card-overlay"><span>✓</span></div></div>`).join("")}
+        function selectStyle(e){selectedStyle===e?selectedStyle=null:selectedStyle=e;document.getElementById("inspirationNote").style.display=selectedStyle!==null?"block":"none";if(selectedStyle!==null)document.getElementById("selectedStyleName").textContent=gallery[e].styleName || `Stil #${e+1}`;renderGallery()}
+        function renderCalendar(){const e=currentDate.getFullYear(),t=currentDate.getMonth(),a=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];document.getElementById("currentMonthYear").textContent=`${a[t]} ${e}`;const s=new Date(e,t,1).getDay(),n=new Date(e,t+1,0).getDate(),l=new Date();l.setHours(0,0,0,0);const d=document.getElementById("calendarDays");d.innerHTML="";const r=0===s?6:s-1;for(let e=0;e<r;e++)d.appendChild(Object.assign(document.createElement("div"),{className:"day-cell empty"}));for(let a=1;a<=n;a++){const s=document.createElement("div");s.className="day-cell",s.textContent=a;const n=new Date(e,t,a);n.setHours(0,0,0,0);const r=`${e}-${String(t+1).padStart(2,"0")}-${String(a).padStart(2,"0")}`;n<l?s.classList.add("disabled"):(s.onclick=()=>selectDate(r),selectedDate===r&&s.classList.add("selected")),d.appendChild(s)}}
+        function changeMonth(e){currentDate.setMonth(currentDate.getMonth()+e);selectedDate=selectedTime=null;updateSelectedInfo();renderCalendar();renderTimeSlots()}
+        function selectDate(e){selectedDate=e;selectedTime=null;renderCalendar();renderTimeSlots();updateSelectedInfo()}
+        function renderTimeSlots(){const e=document.getElementById("timeSlots");e.innerHTML="";if(!selectedDate)return;timeSlots.forEach(t=>{const a=document.createElement("div");a.className="time-slot";a.textContent=t;a.onclick=()=>selectTime(t);if(selectedTime===t)a.classList.add("selected");e.appendChild(a)})}
+        function selectTime(e){selectedTime=e;renderTimeSlots();updateSelectedInfo()}
+        function updateSelectedInfo(){const e=document.getElementById("selectedInfo");if(selectedDate&&selectedTime){const[t,a,s]=selectedDate.split("-");document.getElementById("selectedDate").textContent=`📅 ${s}.${a}.${t}`;document.getElementById("selectedTime").textContent=`🕐 ${selectedTime}`;e.style.display="block"}else e.style.display="none"}
+        function showQRModal(e){const[t,a,s]=e.date.split("-");document.getElementById("modalDate").textContent=`${s}.${a}.${t}`;document.getElementById("modalTime").textContent=e.time;document.getElementById("modalService").textContent=e.service;document.getElementById("modalName").textContent=`${e.firstName} ${e.lastName}`;document.getElementById("modalPhone").textContent=e.phone;const d=document.getElementById("modalDetails");if(e.note){const p=document.createElement("p");p.innerHTML=`<strong>Not:</strong> ${e.note}`;d.appendChild(p)}const n=JSON.stringify({berber:"Berber Kubi",name:`${e.firstName}`,date:e.date,time:e.time}),l=document.getElementById("qrCode");l.innerHTML="";QRCode.toCanvas(n,{width:200},(err,canvas)=>{if(!err)l.appendChild(canvas)});document.getElementById("qrModal").classList.add("active")}
+        function closeQRModal(){document.getElementById("qrModal").classList.remove("active");window.scrollTo({top:0,behavior:"smooth"})}
+        document.addEventListener("DOMContentLoaded",()=>{renderCalendar();renderTimeSlots();loadGallery()});
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzWt0GNW3rT-Gc4LotPBTEua84muvyBhw",
+            authDomain: "berber-kubi-55.firebaseapp.com",
+            projectId: "berber-kubi-55",
+            storageBucket: "berber-kubi-55.firebasestorage.app",
+            messagingSenderId: "31022460981",
+            appId: "1:31022460981:web:816b098b56ebcc377c18bc"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.submitBooking = async (e) => {
+            e.preventDefault();
+            if(!selectedDate || !selectedTime) return alert("Lütfen tarih ve saat seçin!");
+
+            const serviceMap = {haircut:"Saç Kesimi", beard:"Sakal Traşı", combo:"Kombo (Saç + Sakal)"};
+            
+            const appointmentData = {
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                phone: document.getElementById("phone").value,
+                note: document.getElementById("userNote").value,
+                service: serviceMap[document.getElementById("serviceType").value],
+                date: selectedDate,
+                time: selectedTime,
+                status: "pending",
+                inspirationStyle: selectedStyle !== null ? (gallery[selectedStyle].styleName || `Stil #${selectedStyle+1}`) : null,
+                createdAt: serverTimestamp()
+            };
+
+            try {
+                await addDoc(collection(db, "appointments"), appointmentData);
+                alert("✅ Randevu isteğiniz başarıyla gönderildi!");
+                showQRModal(appointmentData);
+                document.getElementById("bookingForm").reset();
+                window.selectedDate = null; window.selectedTime = null; window.selectedStyle = null;
+                updateSelectedInfo(); renderCalendar(); renderTimeSlots();
+            } catch (error) {
+                console.error("Hata:", error);
+                alert("Hata oluştu, lütfen tekrar deneyin.");
+            }
+        };
     </script>
 </body>
 </html>
