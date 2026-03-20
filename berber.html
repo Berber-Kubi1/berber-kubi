@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Berber Kubi - Randevu Al</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -116,7 +116,7 @@
     </div>
     <div class="qr-modal" id="qrModal">
         <div class="qr-content">
-            <h2>✓ Randevunuz Oluşturuldu!</h2>
+            <h2 id="modalHeader">✓ Randevunuz Bekleniyor</h2>
             <p style="color: var(--text-secondary); margin-bottom: 20px;">SMS bildirim ile randevunuz yaklaşınca size haber vereceğiz.</p>
             <div class="qr-code" id="qrCode"></div>
             <div class="appointment-details">
@@ -157,7 +157,6 @@
 
         const timeSlots = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30','13:00', '13:30', '14:00', '14:30', '15:00', '15:30','16:00', '16:30', '17:00', '17:30', '18:00', '18:30','19:00', '19:30'];
         
-        // Firebase'den randevuları dinle
         onSnapshot(collection(db, "appointments"), (snapshot) => {
             appointments = [];
             snapshot.forEach(doc => {
@@ -166,7 +165,6 @@
             renderTimeSlots();
         });
 
-        // Firebase'den galeriyi dinle
         onSnapshot(collection(db, "gallery"), (snapshot) => {
             gallery = [];
             snapshot.forEach(doc => {
@@ -259,6 +257,10 @@
             renderCalendar();
             renderTimeSlots();
             updateSelectedInfo();
+            document.getElementById('timeSlots').scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
         }
 
         function renderTimeSlots() {
@@ -310,24 +312,32 @@
             }
             
             const serviceMap = {'haircut': 'Saç Kesimi','beard': 'Sakal Traşı','combo': 'Kombo (Saç + Sakal)'};
+            const fName = document.getElementById('firstName').value;
+            const lName = document.getElementById('lastName').value;
+            const pNumber = document.getElementById('phone').value;
+            const sType = serviceMap[document.getElementById('serviceType').value];
             
             const apt = {
                 date: selectedDateStr,
                 time: selectedTimeStr,
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                phone: document.getElementById('phone').value,
-                service: serviceMap[document.getElementById('serviceType').value],
+                firstName: fName,
+                lastName: lName,
+                phone: pNumber,
+                service: sType,
                 inspirationStyle: selectedStyle !== null ? (gallery[selectedStyle]?.styleName || `Traş Stili #${selectedStyle + 1}`) : null,
                 status: 'pending',
                 createdAt: serverTimestamp()
             };
 
-            console.log('Gönderilen veri:', apt);
-
             try {
                 const docRef = await addDoc(collection(db, "appointments"), apt);
-                console.log('Başarıyla kaydedildi! ID:', docRef.id);
+                
+                // WHATSAPP MESAJI GÖNDERME
+                const dFormat = selectedDateStr.split('-').reverse().join('.');
+                const message = `Merhaba Kubi, %0A%0ARandevu talebim şu şekildedir:%0A👤 İsim: ${fName} ${lName}%0A📅 Tarih: ${dFormat}%0A🕐 Saat: ${selectedTimeStr}%0A✂️ Hizmet: ${sType}%0A%0AOnayınızı bekliyorum.`;
+                const myNumber = "905551234567"; // BURAYA KENDİ NUMARANI YAZ!
+                window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
+
                 showQRModal(apt);
                 document.getElementById('bookingForm').reset();
                 selectedDateStr = selectedTimeStr = selectedStyle = null;
@@ -335,10 +345,7 @@
                 updateSelectedInfo();
                 renderCalendar();
             } catch (error) {
-                console.error("HATA DETAYI:", error);
-                console.error("Hata Kodu:", error.code);
-                console.error("Hata Mesajı:", error.message);
-                alert('HATA: ' + error.message + '\n\nKonsolu kontrol edin (F12)');
+                alert('HATA: Randevu oluşturulamadı.');
             }
         };
 
@@ -364,9 +371,14 @@
             });
             const qrContainer = document.getElementById('qrCode');
             qrContainer.innerHTML = '';
-            QRCode.toCanvas(qrData, { width: 250 }, (err, canvas) => {
-                if (!err) qrContainer.appendChild(canvas);
-            });
+            
+            // HATA DÜZELTME: window.QRCode kullanımı
+            if (window.QRCode) {
+                window.QRCode.toCanvas(qrData, { width: 250 }, (err, canvas) => {
+                    if (!err) qrContainer.appendChild(canvas);
+                });
+            }
+            
             document.getElementById('qrModal').classList.add('active');
         }
 
