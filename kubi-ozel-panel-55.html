@@ -142,7 +142,11 @@
         };
         window.login = (e) => {
             e.preventDefault();
-            if(document.getElementById('username').value === 'kubi56' && document.getElementById('password').value === '1234') {
+            // MOBİL HATA DÜZELTME: toLowerCase() küçük harf yapar, trim() boşlukları siler.
+            const user = document.getElementById('username').value.toLowerCase().trim();
+            const pass = document.getElementById('password').value.trim();
+
+            if(user === 'kubi56' && pass === '1234') {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminContent').classList.add('active');
                 startApp();
@@ -188,7 +192,7 @@
         window.filterAppointments = (filter) => {
             currentFilter = filter;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event) event.target.classList.add('active');
             renderAppointments();
         };
         function renderAppointments() {
