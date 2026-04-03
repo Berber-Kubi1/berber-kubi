@@ -62,11 +62,11 @@
                     </div>
                     <div class="days-grid" id="calendarDays"></div>
                     <div style="margin-top: 40px;">
-                        <h4 style="margin-bottom: 20px; color: var(--accent-gold);">Saat Seçin</h4>
+                        <h4 style="margin-bottom: 20px; color: var(--accent-gold);" id="timeSlotsTitle">Saat Seçin</h4>
                         <div class="time-slots" id="timeSlots"></div>
                     </div>
                 </div>
-                <div class="booking-form">
+                <div class="booking-form" id="bookingFormSection">
                     <h3>Bilgileriniz</h3>
                     <div id="selectedInfo" class="selected-info" style="display: none;">
                         <h4>Seçiminiz:</h4>
@@ -257,7 +257,8 @@
             renderCalendar();
             renderTimeSlots();
             updateSelectedInfo();
-            document.getElementById('timeSlots').scrollIntoView({
+            // YENİ: Tarih seçince saatlere kaydır
+            document.getElementById('timeSlotsTitle').scrollIntoView({
                 behavior:"smooth",
                 block:"center"
             });
@@ -290,6 +291,11 @@
             selectedTimeStr = time;
             renderTimeSlots();
             updateSelectedInfo();
+            // YENİ: Saat seçince forma kaydır
+            document.getElementById('bookingFormSection').scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
         }
 
         function updateSelectedInfo() {
@@ -312,18 +318,14 @@
             }
             
             const serviceMap = {'haircut': 'Saç Kesimi','beard': 'Sakal Traşı','combo': 'Kombo (Saç + Sakal)'};
-            const fName = document.getElementById('firstName').value;
-            const lName = document.getElementById('lastName').value;
-            const pNumber = document.getElementById('phone').value;
-            const sType = serviceMap[document.getElementById('serviceType').value];
             
             const apt = {
                 date: selectedDateStr,
                 time: selectedTimeStr,
-                firstName: fName,
-                lastName: lName,
-                phone: pNumber,
-                service: sType,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                service: serviceMap[document.getElementById('serviceType').value],
                 inspirationStyle: selectedStyle !== null ? (gallery[selectedStyle]?.styleName || `Traş Stili #${selectedStyle + 1}`) : null,
                 status: 'pending',
                 createdAt: serverTimestamp()
@@ -331,13 +333,6 @@
 
             try {
                 const docRef = await addDoc(collection(db, "appointments"), apt);
-                
-                // WHATSAPP MESAJI GÖNDERME
-                const dFormat = selectedDateStr.split('-').reverse().join('.');
-                const message = `Merhaba Kubi, %0A%0ARandevu talebim şu şekildedir:%0A👤 İsim: ${fName} ${lName}%0A📅 Tarih: ${dFormat}%0A🕐 Saat: ${selectedTimeStr}%0A✂️ Hizmet: ${sType}%0A%0AOnayınızı bekliyorum.`;
-                const myNumber = "905551234567"; // BURAYA KENDİ NUMARANI YAZ!
-                window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
-
                 showQRModal(apt);
                 document.getElementById('bookingForm').reset();
                 selectedDateStr = selectedTimeStr = selectedStyle = null;
@@ -372,7 +367,6 @@
             const qrContainer = document.getElementById('qrCode');
             qrContainer.innerHTML = '';
             
-            // HATA DÜZELTME: window.QRCode kullanımı
             if (window.QRCode) {
                 window.QRCode.toCanvas(qrData, { width: 250 }, (err, canvas) => {
                     if (!err) qrContainer.appendChild(canvas);
