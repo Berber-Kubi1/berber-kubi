@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuby the Barber - Yönetim Paneli</title>
+    <title>Berber Kubi - Yönetim Paneli</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --primary-black: #0a0a0a; --secondary-black: #1a1a1a; --accent-gold: #d4af37; --accent-amber: #ffbf00; --text-primary: #ffffff; --text-secondary: #b8b8b8; --success-green: #2ecc71; --error-red: #e74c3c; --border-color: #333333; }
@@ -11,18 +11,11 @@
         body { font-family: 'Montserrat', sans-serif; background: var(--primary-black); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
         .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 191, 0, 0.02) 0%, transparent 50%); pointer-events: none; z-index: 0; }
         .container { max-width: 1400px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
-        .login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--primary-black); }
-        .login-box { background: var(--secondary-black); border: 1px solid var(--border-color); border-radius: 15px; padding: 50px; max-width: 450px; width: 100%; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-top: 4px solid var(--accent-gold); animation: slideUp 0.5s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .login-box h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 15px; letter-spacing: 2px; }
-        .login-box p { color: var(--text-secondary); margin-bottom: 30px; font-size: 0.9rem; }
-        .form-group { margin-bottom: 25px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-        .form-group input { width: 100%; padding: 15px; background: var(--primary-black); border: 1px solid var(--border-color); border-radius: 8px; color: white; font-size: 1rem; transition: 0.3s; }
-        .form-group input:focus { border-color: var(--accent-gold); outline: none; box-shadow: 0 0 10px rgba(212,175,55,0.2); }
-        .admin-content { display: none; }
-        .admin-content.active { display: block; animation: fadeIn 0.5s ease; }
+        
+        /* Giriş ekranı kaldırıldı, içerik varsayılan olarak görünür */
+        .admin-content { display: block; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 30px; }
         header h2 { font-family: 'Playfair Display'; color: var(--accent-gold); font-size: 2rem; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
@@ -73,28 +66,12 @@
 </head>
 <body>
     <div class="bg-pattern"></div>
-    <div class="login-screen" id="loginScreen">
-        <div class="login-box">
-            <h1>✂️ KUBİ ADMIN</h1>
-            <p>Lütfen yetkili girişi yapınız</p>
-            <form onsubmit="window.login(event)">
-                <div class="form-group">
-                    <label>Kullanıcı Adı</label>
-                    <input type="text" id="username" placeholder="Admin kullanıcı adı" required autocomplete="username">
-                </div>
-                <div class="form-group">
-                    <label>Şifre</label>
-                    <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
-                </div>
-                <button type="submit" class="btn btn-gold" style="width:100%; padding: 18px;">Giriş Yap</button>
-            </form>
-        </div>
-    </div>
+    
     <div class="admin-content" id="adminContent">
         <div class="container">
             <header>
                 <h2>📊 Randevu Paneli</h2>
-                <button class="btn btn-danger" onclick="location.reload()">Güvenli Çıkış</button>
+                <button class="btn btn-gold" onclick="location.reload()">Sayfayı Yenile</button>
             </header>
             <div class="stats-grid">
                 <div class="stat-card"><p>Toplam Randevu</p><div class="number" id="totalCount">0</div></div>
@@ -124,15 +101,22 @@
         </div>
     </div>
     <audio id="notificationSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, onSnapshot, doc, updateDoc, deleteDoc, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         const firebaseConfig = {apiKey: "AIzaSyBzWt0GNW3rT-Gc4LotPBTEua84muvyBhw",authDomain: "berber-kubi-55.firebaseapp.com",projectId: "berber-kubi-55",storageBucket: "berber-kubi-55.firebasestorage.app",messagingSenderId: "31022460981",appId: "1:31022460981:web:816b098b56ebcc377c18bc"};
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        
         let allAppointments = [];
         let currentFilter = 'all';
+
+        // Uygulama açılır açılmaz verileri çekmeye başla
+        startApp();
+
         if (Notification.permission !== "granted") { Notification.requestPermission(); }
+        
         window.notifyMe = (name) => {
             const audio = document.getElementById('notificationSound');
             audio.play().catch(e => console.log("Ses izni gerekli"));
@@ -140,18 +124,7 @@
                 new Notification("✂️ Yeni Randevu!", { body: name + " randevu aldı.", icon: "https://cdn-icons-png.flaticon.com/512/80/80613.png" });
             }
         };
-        window.login = (e) => {
-            e.preventDefault();
-            // MOBİL HATA DÜZELTME: toLowerCase() küçük harf yapar, trim() boşlukları siler.
-            const user = document.getElementById('username').value.toLowerCase().trim();
-            const pass = document.getElementById('password').value.trim();
 
-            if(user === 'kubi56' && pass === '1234') {
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('adminContent').classList.add('active');
-                startApp();
-            } else { alert("❌ Hatalı Kullanıcı Adı veya Şifre!"); }
-        };
         function startApp() {
             onSnapshot(query(collection(db, "appointments"), orderBy("createdAt", "desc")), (snapshot) => {
                 allAppointments = [];
@@ -189,12 +162,14 @@
                 });
             });
         }
+
         window.filterAppointments = (filter) => {
             currentFilter = filter;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             if(event) event.target.classList.add('active');
             renderAppointments();
         };
+
         function renderAppointments() {
             const tbody = document.getElementById("appointmentsTable");
             const emptyState = document.getElementById("emptyState");
@@ -222,13 +197,17 @@
                 tbody.innerHTML += `<tr><td>${dateFormatted}</td><td><strong style="color:var(--accent-gold)">${data.time}</strong></td><td>${data.firstName} ${data.lastName}<br><small style="color:var(--text-secondary)">${data.phone}</small>${data.inspirationStyle ? `<br><small style="color:var(--accent-amber)">🎨 ${data.inspirationStyle}</small>` : ''}</td><td>${data.service}</td><td><span class="status-badge status-${data.status}">${statusText}</span></td><td><div style="display:flex; gap:5px; flex-wrap:wrap;">${data.status === 'pending' ? `<button class="btn btn-success" onclick="window.updateStatus('${data.id}', 'confirmed')">✓ Onayla</button>` : ''}<button class="btn btn-call" onclick="window.callCustomer('${data.phone}')">📞 Ara</button><button class="btn btn-danger" onclick="window.deleteDocData('${data.id}', 'appointments')">✕ Sil</button></div></td></tr>`;
             });
         }
+
         window.updateStatus = async (id, status) => { await updateDoc(doc(db, "appointments", id), { status }); };
+        
         window.callCustomer = (phone) => {
             if(confirm(`${phone} numarasını aramak için telefon uygulamanız açılacak.`)) {
                 window.location.href = `tel:${phone}`;
             }
         };
+
         window.deleteDocData = async (id, col) => { if(confirm("Bu veriyi silmek istediğinize emin misiniz?")) { await deleteDoc(doc(db, col, id)); }};
+
         window.uploadImage = async (e) => {
             const file = e.target.files[0];
             const title = document.getElementById('styleTitle').value.trim();
